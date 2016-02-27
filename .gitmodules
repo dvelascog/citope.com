@@ -1,3 +1,4 @@
-[submodule "utils"]
+[submodule "WAMUtils"]
 	path = utils
 	url = git@bitbucket.org:wearemarketing/wamutils.git
+

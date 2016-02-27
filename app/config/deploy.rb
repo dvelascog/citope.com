@@ -1,16 +1,16 @@
-role :web, "93.188.165.73"
-role :app, "93.188.165.73", :primary => true
+role :web, "51.255.49.2"
+role :app, "51.255.49.2", :primary => true
 
-set :application, "dvelasco.es"
-set :deploy_to, "/web/dvelasco.es"
-set :user, "devel"
+set :application, "test"
+set :deploy_to, "/web/citope_vet"
+set :user, "fodaveg"
 set :ssh_options, {:forward_agent => true}
 set :shared_children, %w(app/logs)
 
 default_run_options[:shell] = '/bin/bash'
 
 set :scm, :git
-set :repository, "git@github.com:fodaveg/dvelasco.es.git"
+set :repository, "git@bitbucket.org:fodaveg/citope_vet.git"
 set :deploy_via, :remote_cache
 set :branch, "develop"
 
