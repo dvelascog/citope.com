@@ -1,0 +1,7 @@
+{% extends '::layout.html.twig' %}
+
+{% block content %}
+    {% for image in images %}
+        <a href="{% path image , 'reference' %}"><img src="{% path image , 'reference' %}"/></a>
+    {% endfor %}
+{% endblock %}

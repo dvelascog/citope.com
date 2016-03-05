@@ -4,39 +4,49 @@ namespace Application\FrontentBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Google_Client;
-use Google_Service_Customsearch_ResultImage;
-use Google_Service_Customsearch;
+use Application\Sonata\MediaBundle\Entity\Media;
+
 class DefaultController extends Controller
 {
     /**
      * @Route("/")
-     * @Template()
      */
     public function homeAction()
     {
+        $images = $this->getMediaProcessor()->ServeImages(true);
 
-        $client = new Google_Client();
-        $client->setApplicationName("citope.com");
-        $client->setDeveloperKey("AIzaSyAobgKimEctoeGN1esZ-W_enHX-Y_VOISQ");
+        return $this->render(':default:home.html.twig', array('images' => $images));
+    }
 
-        $service = new Google_Service_Customsearch($client);
-        $optParams = array();
-        $results = $service->cse->listCse('boobs', $optParams);
-        var_dump($service);
-        die;
+    /**
+     * @param $category
+     * @Route("/{category}")
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function categoryAction($category)
+    {
+        $images = $this->getMediaProcessor()->ServeImages(false, $category);
 
-        foreach ($results as $item) {
-            echo $item['volumeInfo']['title'], "<br /> \n";
-        }
+        return $this->render(':default:home.html.twig', array('images' => $images));
+    }
 
+    /**
+     * @param $category
+     * @Route("/{category}/{width}/{height}")
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function showAction($category, $width, $height)
+    {
+        $image = $this->getMediaProcessor()->ProcessImage($category,$width,$height);
 
-die;
+        return $this->render(':default:show.html.twig', array('image' => $image, 'width' => $width, 'height' => $height));
 
+    }
 
-        $section = 'home';
-
-        return array('section' => $section);
+    private function getMediaProcessor()
+    {
+        return $this->container->get('fodaveg_citope.media_processor');
     }
 }

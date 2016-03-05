@@ -44,6 +44,10 @@ class AppKernel extends Kernel
             new Application\Sonata\ClassificationBundle\ApplicationSonataClassificationBundle(),
             new Application\Sonata\NewsBundle\ApplicationSonataNewsBundle(),
 
+            // External Bundles
+            new RaulFraile\Bundle\LadybugBundle\RaulFraileLadybugBundle(),
+            new Liip\ImagineBundle\LiipImagineBundle(),
+
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

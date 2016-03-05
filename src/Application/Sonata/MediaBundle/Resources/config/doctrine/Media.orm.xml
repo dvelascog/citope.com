@@ -11,6 +11,7 @@
     <entity
         name="Application\Sonata\MediaBundle\Entity\Media"
         table="media__media"
+        repository-class="Application\Sonata\MediaBundle\Repository\MediaRepository"
         >
 
         <id name="id" type="integer" column="id">

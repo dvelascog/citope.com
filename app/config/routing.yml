@@ -1,8 +1,3 @@
-frontend:
-    resource: "@FrontendBundle/Controller/"
-    type:     annotation
-    prefix:   /
-
 admin:
     resource: '@SonataAdminBundle/Resources/config/routing/sonata_admin.xml'
     prefix: /admin
@@ -46,3 +41,23 @@ media:
 news:
     resource: '@SonataNewsBundle/Resources/config/routing/news.xml'
     prefix: /news
+
+sonata_media_pixlr:
+    resource: '@SonataMediaBundle/Resources/config/routing/pixlr.xml'
+    prefix: /admin/media
+
+_liip_imagine:
+    resource: "@LiipImagineBundle/Resources/config/routing.xml"
+
+boobs_homepage:
+    path:     /
+    host:     "boobs.{domain}"
+    defaults:
+        _controller: FrontendBundle:Boobs:allBoobs
+        domain: '%domain%'
+    requirements:
+        domain: '%domain%'
+
+homepage:
+    resource: "@FrontendBundle/Controller/DefaultController.php"
+    type:     annotation
