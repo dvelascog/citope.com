@@ -1,0 +1,5 @@
+services:
+    fodaveg_citope.media_processor:
+        class: Application\FrontentBundle\Utils\MediaProcessor
+        arguments: [ "@doctrine.orm.entity_manager", "@liip_imagine.controller", "@request_stack"]
+        scope: request
