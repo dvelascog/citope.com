@@ -1,6 +1,5 @@
 /web/bundles/
 /web/uploads/
-web/css/*
 web/js/*
 web/fonts/*
 !web/uploads/.gitkeep

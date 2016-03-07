@@ -1,0 +1,10 @@
+.myRabo
+{
+    float: right;
+    position: fixed;
+    right: 15px;
+    bottom: 15px;
+    border-radius: 50%;
+    box-shadow: 0 0 100px 0 #b6008e;
+
+}
