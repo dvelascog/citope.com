@@ -2,14 +2,14 @@
 parameters:
     database_host: 127.0.0.1
     database_port: null
-    database_name: citope_vet_main
-    database_user: user
-    database_password: pass
+    database_name: citope_main
+    database_user: citopiense
+    database_password: HNy&vd_bp<U57!@*
     mailer_transport: smtp
     mailer_host: 127.0.0.1
     mailer_user: null
     mailer_password: null
-    vm_ip: 192.168.33.201
-    vm_port: 4581
+    vm_ip: 192.168.33.202
+    vm_port: 4582
     secret: 8d808dac3c9ee11c441af93d87e3321d0da57774
-    domain: vet.citope.com.dev
+    domain: citope.com.dev
