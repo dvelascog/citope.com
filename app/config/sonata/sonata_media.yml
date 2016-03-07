@@ -32,7 +32,12 @@ sonata_media:
 
     providers:
         image:
-            resizer: sonata.media.resizer.square
+            resizer:    sonata.media.resizer.square
+            service:    sonata.media.provider.image
+            filesystem: sonata.media.filesystem.local
+            cdn:        sonata.media.cdn.server
+            generator:  sonata.media.generator.default
+            thumbnail:  sonata.media.thumbnail.format
             allowed_extensions: ['jpg', 'png', 'jpeg', 'gif']
             allowed_mime_types: ['image/pjpeg', 'image/jpeg', 'image/png', 'image/x-png', 'image/gif']
 
