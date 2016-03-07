@@ -1,10 +1,14 @@
 {% extends '::layout.html.twig' %}
 
 {% block content %}
-    {% set imagePath = '/uploads/media/'~image.context~'/0001/01/'~ image.providerReference %}
 
     {% set runtimeConfig = {"thumbnail": {"size": [width, height] }} %}
 
-        <img src="{{ imagePath | imagine_filter('q90', runtimeConfig) }}"/>
+    {%- set imagePath -%}
+        {% path image, 'reference' %}
+    {%- endset -%}
+
+{% dump imagePath %}
+    <img src="{{ imagePath | imagine_filter('q90', runtimeConfig) }}"/>
 
 {% endblock %}
