@@ -8,7 +8,6 @@
         {% path image, 'reference' %}
     {%- endset -%}
 
-{% dump imagePath %}
     <img src="{{ imagePath | imagine_filter('q90', runtimeConfig) }}"/>
 
 {% endblock %}
