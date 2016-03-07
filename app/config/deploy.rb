@@ -1,7 +1,7 @@
 role :web, "51.255.49.2"
 role :app, "51.255.49.2", :primary => true
 
-set :application, "test"
+set :application, "citope"
 set :deploy_to, "/web/citope.com"
 set :user, "fodaveg"
 set :ssh_options, {:forward_agent => true}
@@ -12,7 +12,7 @@ default_run_options[:shell] = '/bin/bash'
 set :scm, :git
 set :repository, "git@bitbucket.org:fodaveg/citope.com.git"
 set :deploy_via, :remote_cache
-set :branch, "develop"
+set :branch, "master"
 
 set :model_manager, "doctrine"
 
