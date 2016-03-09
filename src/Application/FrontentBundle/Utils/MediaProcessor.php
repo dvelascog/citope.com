@@ -40,11 +40,15 @@ class MediaProcessor
     public function ServeImages($all = false, $category = null)
     {
         if (!$all && $category) {
-            return $images = $this->em->getRepository(Media::class)->findBy(
+            $images = $this->em->getRepository(Media::class)->findBy(
                 array('context' => $category)
             );
         } else {
-            return $images = $this->em->getRepository(Media::class)->findAll();
+            $images = $this->em->getRepository(Media::class)->findAll();
         }
+
+        shuffle($images);
+
+        return $images;
     }
 }
