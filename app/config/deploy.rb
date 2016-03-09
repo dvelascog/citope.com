@@ -5,7 +5,12 @@ set :application, "citope"
 set :deploy_to, "/web/citope.com"
 set :user, "fodaveg"
 set :ssh_options, {:forward_agent => true}
-set :shared_children, %w(app/logs)
+#set :shared_children, %w(app/logs)
+
+set :parameters_file, "parameters.yml.dist"
+set :shared_files,      ["app/config/parameters.yml"]
+#this is the default shared_children configuration, so you don't need to uncomment unless you wanna some change
+#set :shared_children,     [app_path + "/logs", app_path + "/cache/sessions", web_path + "/uploads"]
 
 default_run_options[:shell] = '/bin/bash'
 
@@ -16,10 +21,17 @@ set :branch, "master"
 
 set :model_manager, "doctrine"
 
-logger.level = Logger::MAX_LEVEL
+#logger.level = Logger::MAX_LEVEL
+logger.level = 0
 
 set :use_sudo, false
+default_run_options[:pty] = true
+set :writable_dirs, ["app/cache", "app/logs"]
 set :keep_releases, 5
+set :use_set_permissions, true
+set :webserver_user, "www-data"
+set :permission_method,   :acl
+
 
 set :dump_assetic_assets, false
 set :normalize_asset_timestamps, false
@@ -30,6 +42,8 @@ set :composer_options, "--verbose"
 task :do_deploy do
 	symfony.composer.install
 end
+
+
 
 task :quick_deploy do
 	capifony_pretty_print "--> Doing quick deploy (updating)"
