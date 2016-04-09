@@ -1,5 +1,5 @@
 sonata_media:
-    default_context: default
+    default_context: boobs
     db_driver: doctrine_orm # or doctrine_mongodb, doctrine_phpcr
     contexts:
         default:  # the default context is mandatory
@@ -13,6 +13,14 @@ sonata_media:
                 small: { width: 100 , quality: 70}
                 big:   { width: 500 , quality: 70}
         boobs:
+            providers:
+                - sonata.media.provider.image
+
+            formats:
+                small: { width: 100 , quality: 70}
+                big:   { width: 500 , quality: 70}
+                large: { width: 900 , quality: 70}
+        niggas:
             providers:
                 - sonata.media.provider.image
 
