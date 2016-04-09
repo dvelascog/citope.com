@@ -13,7 +13,7 @@ class DefaultController extends Controller
      */
     public function homeAction()
     {
-        $images = $this->getMediaProcessor()->ServeImages(true, 'boobs');
+        $images = $this->getMediaProcessor()->ServeImages(false, 'boobs');
 
         return $this->render(':default:home.html.twig', array('images' => $images));
     }
