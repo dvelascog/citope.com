@@ -15,7 +15,7 @@ class DefaultController extends Controller
     {
         $images = $this->getMediaProcessor()->ServeImages(false, 'boobs');
 
-        return $this->render(':default:home.html.twig', array('images' => $images));
+        return $this->render(':default:home.html.twig', array('images' => $images, 'category' => 'home'));
     }
 
     /**
@@ -28,7 +28,7 @@ class DefaultController extends Controller
     {
         $images = $this->getMediaProcessor()->ServeImages(false, $category);
 
-        return $this->render(':default:home.html.twig', array('images' => $images));
+        return $this->render(':default:home.html.twig', array('images' => $images, 'category' => $category));
     }
 
     /**

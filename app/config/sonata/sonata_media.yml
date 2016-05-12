@@ -25,9 +25,13 @@ sonata_media:
                 - sonata.media.provider.image
 
             formats:
-                small: { width: 100 , quality: 70}
-                big:   { width: 500 , quality: 70}
-                large: { width: 900 , quality: 70}
+                small: { width: 100 , quality: 90}
+                small2: { width: 200 , quality: 90}
+                small3: { width: 300 , quality: 90}
+                small4: { width: 400 , quality: 90}
+                small5: { width: 500 , quality: 90}
+                big:   { width: 600 , quality: 90}
+                large: { width: 900 , quality: 90}
         niggas:
             providers:
                 - sonata.media.provider.image
