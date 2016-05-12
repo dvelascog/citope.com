@@ -1,7 +1,20 @@
 {% extends '::layout.html.twig' %}
 
 {% block content %}
+
+    {% set mediaSize = 'reference' %}
+
+    {% if category == 'wam' %}
+        {% set sizes = ['small','small2','small3','small4','small5','big','large'] %}
+        {% set mediaSize = random(sizes) %}
+    {% endif %}
+
     {% for image in images %}
-        <img src="{% path image , 'reference' %}"/>
+        <img alt="boobs" src="{% path image , mediaSize %}"/>
     {% endfor %}
+
+    <div>
+        <img class="myRabo" src="{{ asset('media/chuck_approves.gif') }}">
+    </div>
+
 {% endblock %}
