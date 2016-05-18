@@ -6,7 +6,7 @@
 
 
     {% for image in images %}
-        {% if category == 'wam' %}
+        {% if category == 'wam' or category == 'the-inbounder' %}
             {% set sizes = ['small','small2','small3','small4','small5','big','large'] %}
             {% set mediaSize = random(sizes) %}
         {% endif %}
