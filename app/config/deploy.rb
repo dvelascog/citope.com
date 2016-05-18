@@ -15,7 +15,7 @@ set :shared_files,      ["app/config/parameters.yml"]
 default_run_options[:shell] = '/bin/bash'
 
 set :scm, :git
-set :repository, "git@bitbucket.org:fodaveg/citope.com.git"
+set :repository, "git@github.com:fodaveg/citope.com.git"
 set :deploy_via, :remote_cache
 set :branch, "master"
 
