@@ -1,11 +1,13 @@
-<html>
+<!DOCTYPE html>
+    <head>
+        <title>CITOPE!!!</title>
+        <meta charset="utf-8"/>
+        <link rel="icon" href="/favicon.ico">
+    </head>
+    <body>
+    {% include '::analytics.html.twig' %}
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/main.css') }}" />
 
-<head>
-
-</head>
-<body>
-{% block content %}{% endblock content %}
-
-</body>
-
+        {% block content %}{% endblock content %}
+    </body>
 </html>
