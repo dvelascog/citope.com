@@ -32,7 +32,7 @@ sonata_media:
                 small5: { width: 500 , quality: 90}
                 big:   { width: 600 , quality: 90}
                 large: { width: 900 , quality: 90}
-        the-inbounder:
+        inbounder:
             providers:
                 - sonata.media.provider.image
 
