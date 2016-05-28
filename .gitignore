@@ -15,7 +15,6 @@ web/fonts/*
 /vendor/
 /bin/
 /composer.phar
-composer.lock
 app/.phpunit.xml.swp
 backups/
 web/sitemap*xml*
