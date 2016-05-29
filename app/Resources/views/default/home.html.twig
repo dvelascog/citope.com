@@ -2,7 +2,7 @@
 
 {% block content %}
 
-    {% set mediaSize = 'reference' %}
+    {% set mediaSize = 'boobs_small' %}
 
 
     {% for image in images %}
@@ -10,9 +10,9 @@
             {% set sizes = ['small','small2','small3','small4','small5','big','large'] %}
             {% set mediaSize = random(sizes) %}
         {% endif %}
-        <img alt="boobs" src="{% path image , mediaSize %}"/>
+        <img alt="boobs" src="{{ image | imagine_filter('boobs_small') }}"/>
     {% endfor %}
-
+{#{{ image | imagine_filter('boobs_small') }}#}
     <div>
         <img class="myRabo" src="{{ asset('media/chuck_approves.gif') }}">
     </div>
