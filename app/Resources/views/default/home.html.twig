@@ -15,7 +15,11 @@
     {% endfor %}
 
     <div>
+        {% if "niggas" == app.request.attributes.get('category') %}
+        <img class="blackRabo" src="{{ asset('media/nigga.png') }}">
+        {% else %}
         <img class="myRabo" src="{{ asset('media/chuck_approves.gif') }}">
+        {% endif %}
     </div>
 </div>
 
