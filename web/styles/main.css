@@ -31,10 +31,10 @@ body
     float: left;
     height: 40px;
     line-height: 100%;
-    margin: 0;
-    position: absolute;
+    margin: auto;
+    position: fixed;
     width: 99%;
-    z-index: 999;
+    z-index: 100000;
 }
 
 .purga-bar-top
