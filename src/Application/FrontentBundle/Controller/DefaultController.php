@@ -19,6 +19,16 @@ class DefaultController extends Controller
     }
 
     /**
+     * @Route("/rabo-spinner")
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function raboSpinnerAction()
+    {
+        return $this->render(':default:rabo_spinner.html.twig');
+    }
+
+    /**
      * @param $category
      * @Route("/{category}")
      *
