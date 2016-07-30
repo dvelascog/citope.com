@@ -39,14 +39,29 @@ class DefaultController extends Controller
      */
     public function showAction($category, $width, $height)
     {
-        $image = $this->getMediaProcessor()->ProcessImage($category,$width,$height);
+        $image = $this->getMediaProcessor()->ProcessImage($category, $width, $height);
 
-        return $this->render(':default:show.html.twig', array('image' => $image, 'width' => $width, 'height' => $height));
+        return $this->render(
+            ':default:show.html.twig', array('image' => $image, 'width' => $width, 'height' => $height)
+        );
 
     }
 
     private function getMediaProcessor()
     {
         return $this->container->get('fodaveg_citope.media_processor');
+    }
+
+    public function ddpAction()
+    {
+        $now = time(); // or your date as well
+        $thePurgaDay = strtotime("2016-07-20");
+        $datediff = $now - $thePurgaDay;
+
+        $daysAfterPurga = floor($datediff / (60 * 60 * 24));
+
+        return $this->render(':default:days_after_purga.html.twig',array(
+            'days_after_purga' => $daysAfterPurga
+        ));
     }
 }

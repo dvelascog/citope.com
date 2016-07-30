@@ -5,9 +5,10 @@
         <link rel="icon" href="/favicon.ico">
     </head>
     <body>
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}" />
     {% include '::analytics.html.twig' %}
         <link rel="stylesheet" type="text/css" href="{{ asset('css/main.css') }}" />
-
+    {{  render(controller('FrontendBundle:Default:ddp')) }}
         {% block content %}{% endblock content %}
     </body>
 </html>
