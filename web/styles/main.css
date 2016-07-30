@@ -1,0 +1,179 @@
+body
+{
+    background-attachment: fixed;
+    background-clip: border-box;
+    background-color: rgba(0, 0, 0, 0);
+    background-image: url("/img/background.jpg");
+    background-origin: padding-box;
+    background-position: left top;
+    background-repeat: repeat;
+    background-size: auto auto, cover;
+    color: #000;
+    font: 12px Arial, Tahoma, Georgia, "Times New Roman", Times, serif;
+    margin-right: 30px;
+}
+
+.body-content
+{
+    padding: 10% 7%;
+}
+
+.home-bar-top-container
+{
+    color: #666;
+    height: 50px;
+}
+
+.home-bar-top
+{
+    background: rgba(122, 206, 43, 0.5) none repeat scroll 0 0;
+    display: block;
+    float: left;
+    height: 40px;
+    line-height: 100%;
+    margin: 0;
+    position: absolute;
+    width: 99%;
+    z-index: 999;
+}
+
+.purga-bar-top
+{
+    background: rgba(215, 44, 44, 0.5) none repeat scroll 0 0;
+    display: block;
+    float: left;
+    height: 55px;
+    line-height: 100%;
+    margin-top: 3%;
+    position: absolute;
+    width: 99%;
+    z-index: 999;
+}
+
+.purga
+{
+    background: transparent none repeat scroll 0 0;
+    border: 0 none;
+    color: white;
+    display: block;
+    float: left;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 800;
+    height: 50px;
+    line-height: 50px;
+    list-style-type: none;
+    margin: 5px auto;
+    outline: medium none;
+    padding: 0 20px;
+    position: relative;
+    text-align: center;
+    text-decoration: none !important;
+    text-shadow: 0 0 3px #000;
+    text-transform: uppercase;
+    transition: color 0.1s linear 0s;
+}
+
+.purga span
+{
+    color: yellowgreen;
+    font-size: xx-large;
+    font-weight: 900;
+}
+
+.home-bar-top ul
+{
+    display: block;
+    float: left;
+    margin: 0 5%;
+    position: relative;
+}
+
+.home-bar-top ul li
+{
+    -moz-osx-font-smoothing: grayscale;
+    display: block;
+    float: left;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
+    height: 40px;
+    line-height: 40px;
+    list-style-type: none;
+    position: relative;
+    text-rendering: optimizelegibility;
+    text-transform: uppercase;
+}
+
+.home-bar-top ul li a
+{
+    background: transparent none repeat scroll 0 0;
+    border: 0 none;
+    color: white;
+    display: block;
+    font-weight: 700;
+    outline: medium none;
+    padding: 0 20px;
+    text-decoration: none !important;
+    text-shadow: 0 0 3px #000;
+    transition: color 0.1s linear 0s;
+}
+
+.home-bar-top img
+{
+    clear: both;
+    float: left;
+    margin: 5px 5%;
+    max-width: 120px;
+    position: relative;
+    width: 120px;
+}
+
+.hvr-bounce-to-right
+{
+    -moz-osx-font-smoothing: grayscale;
+    backface-visibility: hidden;
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    display: inline-block;
+    position: relative;
+    transform: translateZ(0px);
+    transition-duration: 0.2s;
+    transition-property: color;
+    vertical-align: middle;
+}
+
+.hvr-bounce-to-right::before
+{
+    background: pink none repeat scroll 0 0;
+    bottom: 0;
+    content: "";
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transform: scaleX(0);
+    transform-origin: 0 50% 0;
+    transition-duration: 0.2s;
+    transition-property: transform;
+    transition-timing-function: ease-out;
+    z-index: -1;
+}
+
+.hvr-bounce-to-right:hover, .hvr-bounce-to-right:focus, .hvr-bounce-to-right:active
+{
+    color: white;
+}
+
+.hvr-bounce-to-right:hover::before, .hvr-bounce-to-right:focus::before, .hvr-bounce-to-right:active::before
+{
+    transform: scaleX(1);
+    transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.66);
+}
+
+.myRabo
+{
+    float: right;
+    position: fixed;
+    right: 15px;
+    bottom: 15px;
+    border-radius: 50%;
+    box-shadow: 0 0 100px 0 #b6008e;
+}
