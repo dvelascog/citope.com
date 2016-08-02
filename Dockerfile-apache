@@ -1,4 +1,4 @@
-FROM fodaveg/develop-box:t2
+FROM fodaveg/develop-box:t5
 # COPY ./public-html/ /usr/local/apache2/htdocs/
 
 ENV APACHE_RUN_USER www-data
@@ -7,15 +7,6 @@ ENV APACHE_LOG_DIR /var/log/apache2
 
 RUN echo "IdentityFile vhost" >> /etc/apache2/sites-available/000-default.conf
 
-
-ADD . /app
-WORKDIR /srv/citope
-
-ADD run.sh /run.sh
-# Add main start script for when image launches
-RUN chmod 0755 /run.sh
-
 # Main attributes for running the container
 WORKDIR /srv/citope
 EXPOSE 80
-CMD ["run.sh"]
