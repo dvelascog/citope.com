@@ -13,3 +13,4 @@ parameters:
     vm_port: 4582
     secret: 8d808dac3c9ee11c441af93d87e3321d0da57774
     domain: citope.com
+    last_purga_day: "2016-08-02"

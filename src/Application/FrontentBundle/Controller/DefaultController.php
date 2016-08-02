@@ -4,7 +4,6 @@ namespace Application\FrontentBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Application\Sonata\MediaBundle\Entity\Media;
 
 class DefaultController extends Controller
 {
@@ -54,7 +53,6 @@ class DefaultController extends Controller
         return $this->render(
             ':default:show.html.twig', array('image' => $image, 'width' => $width, 'height' => $height)
         );
-
     }
 
     private function getMediaProcessor()
@@ -65,13 +63,13 @@ class DefaultController extends Controller
     public function ddpAction()
     {
         $now = time(); // or your date as well
-        $thePurgaDay = strtotime("2016-07-20");
+        $thePurgaDay = strtotime($this->getParameter('last_purga_day'));
         $datediff = $now - $thePurgaDay;
 
         $daysAfterPurga = floor($datediff / (60 * 60 * 24));
 
-        return $this->render(':default:days_after_purga.html.twig',array(
-            'days_after_purga' => $daysAfterPurga
+        return $this->render(':default:days_after_purga.html.twig', array(
+            'days_after_purga' => $daysAfterPurga,
         ));
     }
 }
