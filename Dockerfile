@@ -1,18 +1,5 @@
 FROM ansible/ubuntu14.04-ansible:stable
 
-
-# alternative way to add user
-# RUN adduser --disabled-password --gecos '' docker
-
-# RUN useradd -ms /bin/bash docker
-# USER docker
-
-
-# RUN useradd -m docker && echo "docker:docker" | chpasswd && adduser docker sudo
-# USER docker
-# WORKDIR /home/docker
-# CMD /bin/bash
-
 RUN echo "IdentityFile ~/.ssh/id_rsa" >> /etc/ssh/ssh_config
 
 RUN echo "IdentityFile ~/.gitconfig" >> /root/.gitconfig
@@ -26,10 +13,3 @@ WORKDIR /srv/citope
 # ssh in to localhost.
 RUN ansible-playbook utils/ansible/playbook.yml -c local
 
-EXPOSE 443
-ENTRYPOINT ["/usr/local/bin/citope"]
-CMD ["--help"]
-
-
-FROM httpd:2.4
-COPY ./public-html/ /usr/local/apache2/htdocs/
