@@ -1,23 +1,6 @@
-# Default Apache virtualhost template
-
 <VirtualHost *:80>
     ServerAdmin webmaster@localhost
-    DocumentRoot /web
-    ServerName citope.com.dev
-    ServerAlias 192.168.33.202
-    ServerAlias lang1.citope.com.dev
-    ServerAlias lang2.citope.com.dev
-    ServerAlias lang3.citope.com.dev
-
-
-    <Directory /web>
-        Options Indexes FollowSymLinks
-        AllowOverride None
-        Require all granted
-        RewriteEngine On
-        DirectoryIndex app_dev.php
-        RewriteCond %{REQUEST_FILENAME} !-f
-        RewriteRule ^(.*)$ app_dev.php [QSA,L]
-        RewriteBase /
-    </Directory>
+    DocumentRoot /citope/web
+    ServerName citope.dev
+    DirectoryIndex app_dev.php
 </VirtualHost>

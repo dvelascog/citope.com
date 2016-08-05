@@ -8,12 +8,6 @@ RUN echo "IdentityFile ~/.gitconfig" >> /root/.gitconfig
 ADD . /srv/citope
 WORKDIR /srv/citope
 
-ADD run.sh /run.sh
-# Add main start script for when image launches
-RUN chmod 0755 /run.sh
-
-CMD run.sh
-
 # Execute Ansible with your playbook's primary entry point.
 # The "-c local" argument causes Ansible to use a "local connection" that won't attempt to
 # ssh in to localhost.

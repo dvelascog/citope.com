@@ -1,0 +1,35 @@
+FROM php:5.6-fpm
+
+### Install some requirements
+RUN apt-get update && apt-get install -y git apt-utils ruby zlib1g-dev libmcrypt-dev php5-gd libpng-dev libjpeg-dev freetype*  openssh-server \
+    && mkdir -p /var/run/sshd \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN docker-php-ext-configure gd --enable-gd-native-ttf --with-jpeg-dir=/usr/lib/x86_64-linux-gnu --with-png-dir=/usr/lib/x86_64-linux-gnu --with-freetype-dir=/usr/lib/x86_64-linux-gnu \
+    && docker-php-ext-install gd
+
+RUN docker-php-ext-install bcmath mbstring opcache pcntl zip mcrypt pdo_mysql exif \
+    ## Xdebug
+    && pecl install xdebug-beta \
+    && docker-php-ext-enable xdebug \
+    && echo "xdebug.cli_color=1\nxdebug.remote_autostart=1\nxdebug.remote_connect_back=1" > /usr/local/etc/php/conf.d/xdebug.ini
+
+#Add composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
+COPY php.ini /tmp/php.ini_extension
+RUN cat /tmp/php.ini_extension >> /usr/local/etc/php/php.ini \
+    && rm /tmp/php.ini_extension
+
+COPY php-fpm.conf /usr/local/etc/php-fpm.conf
+
+RUN useradd -ms /bin/bash develop
+RUN usermod -u 1000 develop
+
+# SSH configuration to connect on development environment with the interpreter
+RUN echo 'root:develop' | chpasswd
+RUN sed -i 's/PermitRootLogin without-password/PermitRootLogin yes/' /etc/ssh/sshd_config \
+    && sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' -i /etc/pam.d/sshd
+RUN echo "export VISIBLE=now" >> /etc/profile
+
+WORKDIR /app

@@ -1,12 +1,111 @@
+#version: '2'
+#services:
+#    web:
+#        image: httpd:latest
+#        ports:
+#            - "8082:80"
+#        volumes:
+#            - ./:/citope
+#            - ./vhost:/etc/apache2/sites-enabled/000-default.conf
+#        links:
+#            - php
+#            - db
+#    db:
+#        image: mysql
+#        ports:
+#            - 3306:3306
+#        environment:
+#            MYSQL_ROOT_PASSWORD: pass
+#            MYSQL_DATABASE: citope
+#            MYSQL_USER: user
+#            MYSQL_PASSWORD: pass
+#    php:
+#        image: php:5.6-fpm
+#        expose:
+#            - "9000"
+#        volumes:
+#            - ./symfony:/var/www/symfony
+#            - ./logs/symfony:/var/www/symfony/app/logs
+#        links:
+#            - db
+#
+#    nginx:
+#      build: docker/nginx
+#      ports:
+#        - "8080:80"
+#      links:
+#        - php
+#      volumes:
+#        - ./:/app
+#
 version: '2'
 services:
-  web:
-    build: .
-    ports:
-     - "5000:5000"
-    volumes:
-     - .:/code
-    depends_on:
-     - redis
-  redis:
-    image: redis
+    code:
+        build:
+            context: zdocker/code
+            dockerfile: Dockerfile
+        container_name: symfony_code
+        volumes:
+            - ./:/app
+    nginx:
+        build:
+            context: zdocker
+            dockerfile: nginx
+        container_name: symfony_nginx
+        ports:
+          - "8087:80"
+        links:
+          - php
+          - db
+        volumes_from:
+          - code
+        volumes:
+          - ./app/logs/nginx:/var/log/nginx
+    php:
+        build:
+            context: zdocker
+            dockerfile: php
+        container_name: symfony_php
+        volumes:
+          - ~/.ssh:/root/ssh
+        volumes_from:
+          - code
+        ports:
+          - "9000:9000"
+          - "2222:22"
+        links:
+          - code
+          - db
+    db:
+        image: mysql:5.7
+        container_name: symfony_mysql
+        ports:
+            - 3306:3306
+        environment:
+            MYSQL_ROOT_PASSWORD: root
+            MYSQL_DATABASE: citope_main
+            MYSQL_USER: root
+            MYSQL_PASSWORD: root
+        volumes_from:
+          - code
+#
+#
+#    web:
+#        build: zdocker/nginx
+#        container_name: symfony_nginx
+#        image: nginx:latest
+#        ports:
+#            - "8084:80"
+#        volumes:
+#            - .:/code
+#            - ./site.conf:/etc/nginx/conf.d/site.conf
+#        links:
+#            - php
+#    php:
+#        image: fodaveg/php
+#        volumes:
+#            - .:/code
+#        expose:
+#            - "9000"
+#        links:
+#            - web

@@ -1,0 +1,4 @@
+FROM nginx:latest
+
+# Default nginx config
+COPY nginx.conf /etc/nginx/conf.d/app.conf

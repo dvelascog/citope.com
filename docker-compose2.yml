@@ -1,0 +1,20 @@
+version: '2'
+services:
+    application:
+        image: fodaveg/develop-box:t5
+        tty: true
+    db:
+        image: mysql
+        ports:
+            - 3306:3306
+        environment:
+            MYSQL_ROOT_PASSWORD: root
+            MYSQL_DATABASE: symfony
+            MYSQL_USER: root
+            MYSQL_PASSWORD: root
+    apache:
+        image: fodaveg/test-apache-15
+        ports:
+            - 8089:80
+        links:
+            - application
