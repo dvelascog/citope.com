@@ -64,4 +64,21 @@ class AppKernel extends Kernel
     {
         $loader->load($this->getRootDir().'/config/config_'.$this->getEnvironment().'.yml');
     }
+
+    const CACHE_DIR_PREFIX = '/var/tmp/';
+
+    public function getCacheDir()
+    {
+        return $this->getRootDir().'/cache';
+    }
+
+    public function getLogDir()
+    {
+        return $this->getRootDir().'/logs';
+    }
+
+    private function getVagrantDir($dir)
+    {
+        return self::CACHE_DIR_PREFIX.trim(str_replace('/', '_', $dir), '_');
+    }
 }

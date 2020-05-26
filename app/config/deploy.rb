@@ -1,10 +1,10 @@
-role :web, "51.255.49.2"
-role :app, "51.255.49.2", :primary => true
+role :web, "51.210.103.162"
+role :app, "51.210.103.162", :primary => true
 
 set :application, "citope"
 set :deploy_to, "/web/citope.com"
-set :user, "fodaveg"
-set :ssh_options, {:forward_agent => true}
+set :user, "gnomo"
+set :ssh_options, {:forward_agent => true, :port => 7850}
 #set :shared_children, %w(app/logs)
 
 set :parameters_file, "parameters.yml.dist"
@@ -29,7 +29,7 @@ default_run_options[:pty] = true
 set :writable_dirs, ["app/cache", "app/logs"]
 set :keep_releases, 5
 set :use_set_permissions, true
-set :webserver_user, "www-data"
+set :webserver_user, "gnomo"
 set :permission_method,   :acl
 
 
